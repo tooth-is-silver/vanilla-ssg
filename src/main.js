@@ -1,6 +1,21 @@
 import { App } from "./components.js";
 import { model } from "./model.js";
 
+async function updateTodoItems(todoItems) {
+  const headers = { "Content-Type": "application/json" };
+  const body = JSON.stringify({ todoItems });
+  // api put으로 데이터 업데이트
+  return fetch("/api/todo-items", { method: "put", headers, body }).then(
+    (res) => res.json()
+  );
+}
+
+async function syncServerModel() {
+  // 업데이트된 새로운 데이터를 model에 초기 데이터로 적재한다.
+  const newTodoItems = await updateTodoItems(model.todoItems);
+  model.init({ todoItems: newTodoItems });
+}
+
 function render() {
   const $app = document.querySelector("#app");
   $app.innerHTML = App(model.todoItems); // CRS로 app그려주기
@@ -12,13 +27,13 @@ function render() {
    * 3. 서버와 통신하지 않음
    *
    */
-  $app.querySelector("#add").onclick = () => {
+  $app.querySelector("#add").onclick = async () => {
     model.addTodoItem("새로운 아이템");
-    render();
+    syncServerModel().then(render); // 업데이트 후에 csr render동작
   };
-  $app.querySelector("#delete").onclick = () => {
-    model.deleteTodoItem(0);
-    render();
+  $app.querySelector("#delete").onclick = async () => {
+    model.deleteTodoItem(model.todoItems.length - 1);
+    syncServerModel().then(render); // 업데이트 후에 csr render동작
   };
 }
 

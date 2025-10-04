@@ -21,7 +21,7 @@ export const model = {
   },
 
   // 초기 데이터를 가져와서 교체
-  init(totoItems) {
-    this.todoItems = totoItems;
+  init(initalModel) {
+    this.todoItems = initalModel.todoItems;
   },
 };

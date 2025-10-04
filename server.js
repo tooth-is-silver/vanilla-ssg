@@ -14,14 +14,9 @@ app.use(express.json());
 // src내부의 파일들을 static하게 접근하여 브라우저에서 코드를 읽을 수 있다.
 app.use("/src", express.static("./src"));
 
-app.post("/api/todo-items", (req, res) => {
-  model.addTodoItem(req.body.content); // content의 정보를 전달
-  res.status(201).send();
-});
-
-app.delete("/api/todo-items/:index", (req, res) => {
-  model.deleteTodoItem(req.params.index); // index를 파라미터로 전달
-  res.status(204).send();
+app.put("/api/todo-items", (req, res) => {
+  model.init({ todoItems: req.body.todoItems });
+  res.status(200).send(model.todoItems); // 업데이트된 데이터를 반환
 });
 
 app.get("/", (req, res) => {
