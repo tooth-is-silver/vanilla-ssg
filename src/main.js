@@ -1,5 +1,5 @@
 import { App } from "./components.js";
-import { model } from "./model";
+import { model } from "./model.js";
 
 function render() {
   const $app = document.querySelector("#app");

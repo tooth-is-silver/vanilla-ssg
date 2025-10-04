@@ -3,8 +3,8 @@ import { App } from "./components.js";
  * 서버에 독립적이지만 html문자열을 만드는 역할을 가진 코드
  * ssr의 성질을 가진다
  */
-export const generateHTML = (todoItems) => `
-    <!DOTTYPE html>
+export const generateHTML = (model) => `
+    <!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -12,7 +12,7 @@ export const generateHTML = (todoItems) => `
     </head>
     <body>
         <div id="app">
-            ${App(todoItems)}
+            ${App(model.todoItems)}
         </div>
     </body>
     <script src='./src/main.js' type='module'></script>

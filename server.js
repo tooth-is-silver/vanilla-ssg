@@ -25,7 +25,7 @@ app.delete("/api/todo-items/:index", (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  res.send(generateHTML(model.todoItems));
+  res.send(generateHTML(model));
 });
 
 app.listen(8000, () => console.log("listen to http://localhost:8000"));
