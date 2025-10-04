@@ -9,4 +9,14 @@ export const model = {
     "MVVM은 또 뭐야?",
     "공부해야 할게 왜이렇게 많아?",
   ],
+
+  // add todo
+  addTodoItem(item) {
+    this.todoItems.push(item);
+  },
+
+  // delete todo
+  deleteTodoItem(index) {
+    this.todoItems.splice(index, 1);
+  },
 };

@@ -9,6 +9,17 @@ import express from "express";
  */
 
 const app = express();
+app.use(express.json());
+
+app.post("/api/todo-items", (req, res) => {
+  model.addTodoItem(req.body.content); // content의 정보를 전달
+  res.status(201).send();
+});
+
+app.delete("/api/todo-items/:index", (req, res) => {
+  model.deleteTodoItem(req.params.index); // index를 파라미터로 전달
+  res.status(204).send();
+});
 
 app.get("/", (req, res) => {
   res.send(generateHTML(model.todoItems));
