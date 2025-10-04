@@ -11,6 +11,9 @@ import express from "express";
 const app = express();
 app.use(express.json());
 
+// src내부의 파일들을 static하게 접근하여 브라우저에서 코드를 읽을 수 있다.
+app.use("/src", express.static("./src"));
+
 app.post("/api/todo-items", (req, res) => {
   model.addTodoItem(req.body.content); // content의 정보를 전달
   res.status(201).send();
