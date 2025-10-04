@@ -1,0 +1,15 @@
+{
+  "name": "vanilla-ssg",
+  "version": "1.0.0",
+  "description": "블로그를 참고하여 vanilla로 ssg만들어보기",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
