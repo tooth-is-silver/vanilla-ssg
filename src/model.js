@@ -19,4 +19,9 @@ export const model = {
   deleteTodoItem(index) {
     this.todoItems.splice(index, 1);
   },
+
+  // 초기 데이터를 가져와서 교체
+  init(totoItems) {
+    this.todoItems = totoItems;
+  },
 };

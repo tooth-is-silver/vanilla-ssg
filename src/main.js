@@ -23,6 +23,8 @@ function render() {
 }
 
 function main() {
+  // 서버에 전달받은 데이터를 model에 전달한다
+  model.init(window.__INITIAL_MODEL__);
   render();
 }
 
